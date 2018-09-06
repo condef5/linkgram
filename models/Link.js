@@ -10,7 +10,7 @@ const LinkSchema = new mongoose.Schema({
   image: String,
   tagList: [{ type: String }],
   author: { type: mongoose.Schema.Types.ObjectId, ref: 'User' }
-});
+}, { timestamps: true });
 
 LinkSchema.plugin(uniqueValidator, {url: 'this link already exist'});
 
@@ -31,7 +31,7 @@ LinkSchema.methods.toJSONFor = function(user){
     updatedAt: this.updatedAt,
     image: this.image,
     tagList: this.tagList,
-    favorited: user ? user.isFavortie(this._id) : false,
+    favorited: user ? user.isFavorite(this._id) : false,
     favoritesCount: this.favoritesCount,
     author: this.author.toProfileJSONFor(user)
   };
