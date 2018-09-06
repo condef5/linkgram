@@ -2,6 +2,7 @@ var router = require('express').Router();
 
 router.use('/', require('./users'));
 router.use('/links', require('./links'));
+router.use('/profiles', require('./profiles'));
 
 // manage errors
 router.use(function(err, req, res, next){
